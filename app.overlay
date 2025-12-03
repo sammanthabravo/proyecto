@@ -1,0 +1,16 @@
+/* app.overlay */
+/ {
+    pwm_outputs {
+        compatible = "pwm-leds";
+        buzzer_pwm_custom: buzzer_pwm_custom {
+            pwms = <&sw_pwm 0 PWM_HZ(440) PWM_POLARITY_NORMAL>;
+            label = "PWM_BUZZER_CUSTOM";
+        };
+    };
+};
+
+&sw_pwm {
+    status = "okay";
+    channel-gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
+    clock-prescaler = <8>;
+};
